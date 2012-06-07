@@ -46,6 +46,7 @@ class auth_shib extends auth_basic
             'var_mail' => '',
             'var_entitlement' => '',
             'var_groups' => '',
+            'var_afsgroups' => '',
             'tpl_user_name' => '',
             'superusers' => array(),
             'defaultgroup' => $conf['defaultgroup'],
@@ -111,6 +112,7 @@ class auth_shib extends auth_basic
             }
 
             $this->_setGroups();
+            $this->_setAfsGroups();
             $this->_setCustomGroups($userId);
             $this->_setEntitlementGroups();
 
@@ -220,6 +222,19 @@ class auth_shib extends auth_basic
 
     }
 
+    function _setAfsGroups ()
+    {
+        $afsGroups = $this->_getOption('var_afsgroups');
+        if (! $afsGroups) {
+            return;
+        }
+
+        $groups = $this->_getShibVar($afsGroups, true);
+        foreach ($groups as $groupName) {
+            $this->_addUserGroup($groupName);
+            //$this->_userInfo['afsgrps'][] = trim($group);
+        }
+    }
 
     function _setEntitlementGroups ()
     {

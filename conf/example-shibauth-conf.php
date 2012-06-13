@@ -2,9 +2,7 @@
 
 # Example configuration for the Shibboleth Authentication Backend
 
-
 # Global configuration
-
 
 # Sets shibboleth authentication
 $conf['authtype'] = 'shib';
@@ -13,7 +11,6 @@ $conf['authtype'] = 'shib';
 $conf['superuser'] = '@admin';
 
 # Shibboleth configuration
-
 
 # 'lazy sessions' - Enable/disable lazy sessions 
 # [ default: false ]
@@ -43,16 +40,21 @@ $conf['auth']['shib']['var_mail'] = 'mail';
 #   - '{cn} ({mail})' - renders the 'cn' attribute followed by 'mail' in brackets
 #$conf['auth']['shib']['tpl_user_name'] = 
 
-
 # 'defaultgroup' - The name of the default group for all authenticated users
 # [ default: $conf['defaultgroup'] ]
 #$conf['auth']['shib']['defaultgroup'] = 'allusers';
-
 
 # 'admingroup' - The name of the superusers group.
 # [ default: 'admin' ]
 #$conf['auth']['shib']['admingroup'] = 'administrators';
 
+# 'var_groups' - Groups provided by the server
+# [ default: '' ]
+#$conf['auth']['shib']['var_groups'] = 'HTTP_SHIB_EP_UNSCOPEDAFFILIATION';
+
+# 'var_afsgroups' - Afs Groups provided by the server
+# [ default: '' ]
+#$conf['auth']['shib']['var_afsgroups'] = 'Shib-afsgroup';
 
 # 'customgroups' - Enable/disable the use of custom groups
 # If enabled, it's possible to define custom user groups in a separate file (see below).
@@ -64,7 +66,6 @@ $conf['auth']['shib']['var_mail'] = 'mail';
 # );
 # [ default: false ]
 #$conf['auth']['shib']['customgroups'] = true;
-
 
 # 'customgroups_file' - Specify a path for the custom groups file 
 # [ default: DOKU_CONF/custom_groups.php ]
@@ -83,5 +84,5 @@ $conf['auth']['shib']['var_mail'] = 'mail';
 # [ default: false ]
 #$conf['auth']['shib']['debug'] = true;
 
-
 ?>
+
